@@ -2,10 +2,10 @@
 import React, { useState } from "react";
 
 function Header() {
-  const [selectedOption, setSelectedOption] = useState(""); // State to hold the selected option
+  const [dropdownVisible, setDropdownVisible] = useState(false);
 
-  const handleOptionChange = (e) => {
-    setSelectedOption(e.target.value); // Update the selected option when it changes
+  const toggleDropdown = () => {
+    setDropdownVisible(!dropdownVisible);
   };
 
   return (
@@ -14,13 +14,15 @@ function Header() {
         <ul>
           <li><a href="#">About</a></li>
           <li><a href="#">Log In</a></li>
-          <li className="dropdown">
-            <select value={selectedOption} onChange={handleOptionChange} className="dropbtn">
-              <option value="">View Gallery</option>
-              <option value="Sun">Sun</option>
-              <option value="Mountains">Mountains</option>
-              <option value="Beach">Beach</option>
-            </select>
+          <li className="dropdown" onClick={toggleDropdown}>
+            <a href="#" className="dropbtn">View Gallery</a>
+            {dropdownVisible && (
+              <div className="dropdown-content">
+                <a href="#">Sun</a>
+                <a href="#">Mountains</a>
+                <a href="#">Beach</a>
+              </div>
+            )}
           </li>
           <li><a href="#">Order</a></li>
         </ul>
