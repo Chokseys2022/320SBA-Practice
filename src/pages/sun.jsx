@@ -1,9 +1,18 @@
-import React from 'react'
+// Sun.jsx
+import React from "react";
+import sunData from "../sunData"; // Import Sun data
 
-function sun() {
+const Sun = () => {
   return (
-    <div>sun</div>
-  )
-}
+    <div className="image-container">
+      {sunData.map((image) => (
+        <div key={image.id} className="image-item">
+          <img src={image.src} alt={image.alt} /> {/* Corrected here */}
+          <p>{image.alt}</p>
+        </div>
+      ))}
+    </div>
+  );
+};
 
-export default sun
+export default Sun;
